@@ -1,5 +1,3 @@
-package library;
-
 import library.items.Book;
 import library.items.Periodical;
 import library.patrons.Patron;

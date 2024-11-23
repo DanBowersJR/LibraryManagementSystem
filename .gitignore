@@ -1,0 +1,6 @@
+# macOS system files
+.DS_Store
+
+# IntelliJ files
+.idea/
+*.iml
