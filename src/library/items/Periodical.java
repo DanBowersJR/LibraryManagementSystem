@@ -1,35 +1,37 @@
 package library.items;
 
+/**
+ * Represents a periodical (e.g., magazine, journal) in the library system.
+ * Extends the LibraryItem base class and adds issue and frequency attributes.
+ */
 public class Periodical extends LibraryItem {
-    private String issueNumber; // Specific to periodicals
-    private String publicationFrequency; // e.g., Weekly, Monthly
+    private String issue;
+    private String frequency;
 
-    // Constructor
-    public Periodical(String id, String title, String author, String isbn, String publisher, int copiesAvailable, String issueNumber, String publicationFrequency) {
+    // Constructor for initializing periodical-specific and common attributes
+    public Periodical(String id, String title, String author, String isbn, String publisher, int copiesAvailable, String issue, String frequency) {
         super(id, title, author, isbn, publisher, copiesAvailable);
-        this.issueNumber = issueNumber;
-        this.publicationFrequency = publicationFrequency;
+        this.issue = issue;
+        this.frequency = frequency;
     }
 
-    // Getters and Setters
-    public String getIssueNumber() {
-        return issueNumber;
+    // Getters for issue and frequency
+    public String getIssue() {
+        return issue;
     }
 
-    public void setIssueNumber(String issueNumber) {
-        this.issueNumber = issueNumber;
+    public String getFrequency() {
+        return frequency;
     }
 
-    public String getPublicationFrequency() {
-        return publicationFrequency;
-    }
-
-    public void setPublicationFrequency(String publicationFrequency) {
-        this.publicationFrequency = publicationFrequency;
+    // Overrides the abstract method to specify item type
+    @Override
+    public String getItemType() {
+        return "Periodical";
     }
 
     @Override
     public String toString() {
-        return super.toString() + ", issueNumber='" + issueNumber + '\'' + ", publicationFrequency='" + publicationFrequency + '\'' + "}";
+        return super.toString() + " (Issue: " + issue + ", Frequency: " + frequency + ")";
     }
 }

@@ -1,36 +1,50 @@
 package library.patrons;
 
 import library.items.LibraryItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a patron in the library.
+ */
 public class Patron {
     private String id;
     private String name;
-    private List<LibraryItem> borrowedItems; // Tracks borrowed items
+    private String role;
+    private String address;
+    private String phone;
+    private List<LibraryItem> borrowedItems;
 
     // Constructor
-    public Patron(String id, String name) {
+    public Patron(String id, String name, String role, String address, String phone) {
         this.id = id;
         this.name = name;
+        this.role = role;
+        this.address = address;
+        this.phone = phone;
         this.borrowedItems = new ArrayList<>();
     }
 
-    // Getters and Setters
+    // Getters
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getRole() {
+        return role;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public List<LibraryItem> getBorrowedItems() {
@@ -38,30 +52,17 @@ public class Patron {
     }
 
     // Borrow an item
-    public boolean borrowItem(LibraryItem item) {
-        if (item.getCopiesAvailable() > 0) {
-            borrowedItems.add(item);
-            item.setCopiesAvailable(item.getCopiesAvailable() - 1);
-            return true; // Successfully borrowed
-        }
-        return false; // No copies available
+    public void borrowItem(LibraryItem item) {
+        borrowedItems.add(item);
     }
 
     // Return an item
-    public boolean returnItem(LibraryItem item) {
-        if (borrowedItems.remove(item)) {
-            item.setCopiesAvailable(item.getCopiesAvailable() + 1);
-            return true; // Successfully returned
-        }
-        return false; // Item was not borrowed
+    public void returnItem(LibraryItem item) {
+        borrowedItems.remove(item);
     }
 
     @Override
     public String toString() {
-        return "Patron{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", borrowedItems=" + borrowedItems +
-                '}';
+        return "Patron ID: " + id + "\nName: " + name + "\nRole: " + role + "\nAddress: " + address + "\nPhone: " + phone + "\nBorrowed Items: " + borrowedItems;
     }
 }

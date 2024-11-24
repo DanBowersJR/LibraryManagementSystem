@@ -1,5 +1,8 @@
 package library.items;
 
+/**
+ * Abstract base class for all library items.
+ */
 public abstract class LibraryItem {
     private String id;
     private String title;
@@ -8,7 +11,7 @@ public abstract class LibraryItem {
     private String publisher;
     private int copiesAvailable;
 
-    // Constructor
+    // Constructor for initializing common attributes
     public LibraryItem(String id, String title, String author, String isbn, String publisher, int copiesAvailable) {
         this.id = id;
         this.title = title;
@@ -23,40 +26,20 @@ public abstract class LibraryItem {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
     public String getPublisher() {
         return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
     }
 
     public int getCopiesAvailable() {
@@ -67,15 +50,11 @@ public abstract class LibraryItem {
         this.copiesAvailable = copiesAvailable;
     }
 
+    // Abstract method to be implemented by subclasses
+    public abstract String getItemType();
+
     @Override
     public String toString() {
-        return "LibraryItem{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", copiesAvailable=" + copiesAvailable +
-                '}';
+        return title + " (" + getItemType() + ") by " + author;
     }
 }
